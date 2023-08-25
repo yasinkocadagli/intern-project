@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import logo from "../../src/assets/jotformLogo.svg";
 import icon from "../../src/assets/icons.svg";
 import profile from "../../src/assets/profile.png";
+import "./Header.css";
 
 const Header = () => {
   return (
