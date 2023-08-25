@@ -6,26 +6,34 @@ import profile from "../../src/assets/profile.png";
 const Header = () => {
   return (
     <Fragment>
-      <header>
-        <div>
+      <header className="header">
+        <div className="header-content">
           <div className="logo-container">
             <img src={logo} alt="Company Logo" />
             <span className="vertical-line"></span>
             <p className="company-name">Jotform</p>
           </div>
-          <div>
+          <div className="nav-links">
             <p>Tablolarım</p>
-            <img className="icons" src={icon} alt="an icon with a down arrow" />
+            <img
+              className="nav-icon"
+              src={icon}
+              alt="an icon with a down arrow"
+            />
           </div>
-          <div>
+          <div className="nav-links">
             <p>Formlarım</p>
             <p>Şablonlar</p>
-            <p>Entagrasyonlar</p>
+            <p>Entegrasyonlar</p>
             <p>Ürünler</p>
             <p>Destek</p>
             <p>Kurumsal</p>
             <p>Fiyatlandırma</p>
-            <img src={profile} alt="user profile photos" />
+            <img
+              className="profile-icon"
+              src={profile}
+              alt="user profile photos"
+            />
           </div>
         </div>
       </header>
