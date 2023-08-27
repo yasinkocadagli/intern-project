@@ -57,13 +57,13 @@
 }
 
 .header-right-content-texts {
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .header-right-content-texts p {
-  cursor: pointer;
   color: #fff;
   font-family: Inter;
   font-size: 18px;
