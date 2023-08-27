@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import myImage from "../../src/assets/profilepicture.jpg";
-import logo from "../../src/assets/jotformLogo.svg";
+import myImage from "../../../src/assets/profilepicture.jpg";
+import logo from "../../../src/assets/jotformLogo.svg";
 
 import "./Header.css";
 
