@@ -63,6 +63,7 @@
 }
 
 .header-right-content-texts p {
+  cursor: pointer;
   color: #fff;
   font-family: Inter;
   font-size: 18px;
