@@ -4,8 +4,10 @@
 import { Fragment } from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
-import Home from './components/Home/Home';
+
+
+
+import Layout from './components/Layout/Layout';
 
 
 function App() {
@@ -13,8 +15,7 @@ function App() {
     <Fragment>
        <Header />
 
-        <Sidebar />
-        <Home />
+       <Layout/>
       
     </Fragment>
   );
