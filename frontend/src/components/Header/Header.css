@@ -37,6 +37,13 @@
 .logo-side-text {
   margin-left: 12px;
   padding: 0;
+  display: flex;
+}
+
+.logo-side-text span {
+  color: #fff;
+  cursor: pointer;
+  margin-left: 5px;
 }
 
 .logo-side-text p {
