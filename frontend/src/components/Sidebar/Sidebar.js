@@ -12,11 +12,19 @@ const Sidebar = () => {
         <div>
           <p>Takımlarım</p>
           <button>Takım oluştur</button>
+          <span class="material-symbols-outlined">add_circle</span>
         </div>
         <button>Benimle paylaşılanlar</button>
-        <button>Favoriler</button>
+        <div>
+          <button>Favoriler</button>
+          <span class="material-symbols-outlined">star</span>
+        </div>
+
         <button>Arşiv</button>
-        <button>Çöp kutusu</button>
+        <div>
+          <button>Çöp kutusu</button>
+          <span class="material-symbols-outlined">delete</span>
+        </div>
       </div>
     </Fragment>
   );
