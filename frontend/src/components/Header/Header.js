@@ -28,6 +28,7 @@ const Header = () => {
           <div className="header-right-content-texts">
             <p>Formlarım</p>
             <p>Şablonlar</p>
+
             <p>Entegrasyonlar</p>
             <p>Ürünler</p>
             <p>Destek</p>
