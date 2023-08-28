@@ -17,6 +17,7 @@ const Header = () => {
           <div className="logo-divider"></div>
           <div className="logo-side-text">
             <p>Tablolarım</p>
+
             {/* Buraya ikon ekle */}
           </div>
         </div>
