@@ -12,7 +12,9 @@ const Sidebar = () => {
 
         <div className="alltable">
           <p>Tablolarım</p>
-          <button className="general-buttons">Tüm tablolar</button>
+          <button className="general-buttons"><span class="material-symbols-outlined icons-margin">
+            table_rows_narrow
+          </span>Tüm tablolar</button>
         </div>
 
         <div className="alltable">
@@ -25,31 +27,34 @@ const Sidebar = () => {
           </button>
         </div>
 
-        <div className="bottom-buttons">
+        <div className="share-part">
           <div className="group-buttons">
             <button className="general-buttons">Benimle paylaşılanlar</button>
           </div>
+        </div>
 
+        <div className="bottom-buttons">
           <div className="group-buttons">
-            <button className="general-buttons icon-buttons">
-              <span class="material-symbols-outlined favorites-icon">star</span>
+            <button className="general-buttons">
+              <span class="material-symbols-outlined favorites-icon icons-margin">star</span>
               Favoriler
             </button>
           </div>
 
           <div className="group-buttons">
             <button className="general-buttons">
-              <span class="material-symbols-outlined">inbox</span>Arşiv
+              <span class="material-symbols-outlined icons-margin">inbox</span>Arşiv
             </button>
           </div>
 
           <div className="group-buttons">
-            <button className="general-buttons icon-buttons">
+            <button className="general-buttons">
               <span class="material-symbols-outlined icons-margin">delete</span>
               Çöp kutusu
             </button>
           </div>
         </div>
+
       </div>
       {/* SIDEBAR */}
     </Fragment>
