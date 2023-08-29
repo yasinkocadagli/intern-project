@@ -28,8 +28,13 @@ const TablesHeader = () => {
         </div>
 
         <div className="header-right-content">
-          <button>Paylaş</button>
-          <button>Yardım</button>
+          <button>
+            <span class="material-symbols-outlined">share</span>
+            Paylaş
+          </button>
+          <button>
+            <span class="material-symbols-outlined">help</span>Yardım
+          </button>
           <img src={myImage} alt="users profile " />
         </div>
       </header>
