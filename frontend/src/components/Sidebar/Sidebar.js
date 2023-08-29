@@ -6,55 +6,51 @@ const Sidebar = () => {
     <Fragment>
       {/* SIDEBAR */}
       <div className="sidebar">
-        <div className="table-creat">
+
+        <div className="table-creat ">
           <button className="first-button">Tablo oluştur</button>
         </div>
 
-        <div className="alltable">
+        <div className="all-section">
           <p>Tablolarım</p>
-          <button className="general-buttons"><span class="material-symbols-outlined icons-margin">
-            table_rows_narrow
-          </span>Tüm tablolar</button>
+          <button className="all-buttons"><span class="material-symbols-outlined table-logo">table_rows_narrow</span>
+          Tüm tablolar
+          </button>
         </div>
 
-        <div className="alltable">
+        <div className="all-section">
           <p>Takımlarım</p>
-          <button className="general-buttons icon-buttons">
-            <span class="material-symbols-outlined icons-margin">
-              add_circle
-            </span>
+          <button className="all-buttons">
+            <span class="material-symbols-outlined">add_circle</span>
             Takım oluştur
           </button>
         </div>
 
-        <div className="share-part">
-          <div className="group-buttons">
-            <button className="general-buttons">Benimle paylaşılanlar</button>
-          </div>
+        <div className="all-section">
+          <button className="all-buttons">Benimle paylaşılanlar</button>
         </div>
 
-        <div className="bottom-buttons">
-          <div className="group-buttons">
-            <button className="general-buttons">
-              <span class="material-symbols-outlined favorites-icon icons-margin">star</span>
+        <div className="side-bottom">
+          <div className="side-bottom-content">
+            <button className="all-buttons">
+              <span class="material-symbols-outlined favorites-icon">star</span>
               Favoriler
             </button>
           </div>
 
-          <div className="group-buttons">
-            <button className="general-buttons">
-              <span class="material-symbols-outlined icons-margin">inbox</span>Arşiv
+          <div className="side-bottom-content">
+            <button className="all-buttons">
+              <span class="material-symbols-outlined">inbox</span>Arşiv
             </button>
           </div>
 
-          <div className="group-buttons">
-            <button className="general-buttons">
-              <span class="material-symbols-outlined icons-margin">delete</span>
+          <div className="side-bottom-content">
+            <button className="all-buttons">
+              <span class="material-symbols-outlined">delete</span>
               Çöp kutusu
             </button>
           </div>
         </div>
-
       </div>
       {/* SIDEBAR */}
     </Fragment>

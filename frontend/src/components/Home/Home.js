@@ -22,45 +22,8 @@ const Home = () => {
             <input type="checkbox" />
             <p>Company tables</p>
           </div>
-          <div>
-            {/*<img src={tablesImg} alt="" />*/}
-            <span class="material-symbols-outlined">star</span>
-
-            <input type="checkbox" />
-            <p>Analysis Tables</p>
-          </div>
-          <div>
-            {/*<img src={tablesImg} alt="" />*/}
-            <span class="material-symbols-outlined">star</span>
-
-            <input type="checkbox" />
-            <p>Code Tables</p>
-          </div>
         </div>
 
-        <div>
-          <div>
-            {/*<img src={tablesImg} alt="" />*/}
-            <span class="material-symbols-outlined">star</span>
-
-            <input type="checkbox" />
-            <p>Robotic Tables</p>
-          </div>
-          <div>
-            {/*<img src={tablesImg} alt="" />*/}
-            <span class="material-symbols-outlined">star</span>
-
-            <input type="checkbox" />
-            <p>Music</p>
-          </div>
-          <div>
-            {/*<img src={tablesImg} alt="" />*/}
-            <span class="material-symbols-outlined">star</span>
-
-            <input type="checkbox" />
-            <p>Flower tables</p>
-          </div>
-        </div>
       </main>
     </Fragment>
   );
