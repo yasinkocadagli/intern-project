@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <Fragment>
-      <main>
+      <div>
         {showNavbar ? (
           <div className="up-content">
             <div className="update-button">
@@ -55,7 +55,9 @@ const Home = () => {
           <input type="checkbox" onClick={showNavbarhandler} />
           <Link to="/table">Company tables</Link>
         </div>
-      </main>
+      </div>
+
+
     </Fragment>
   );
 };
