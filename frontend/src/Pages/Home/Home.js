@@ -6,19 +6,26 @@ import "./Home.css";
 const Home = () => {
   return (
     <Fragment>
-
-    
       <main>
-        <nav>
-          <div>
-            <span class="material-symbols-outlined">notes</span>
-            <button>Son güncelleme</button>
+
+        <div className="up-content">
+          <div className="update-button">
+            <button><span class="material-symbols-outlined">notes</span> Son güncelleme
+            </button>
           </div>
-          <span class="material-symbols-outlined">search</span>
-          <input type="search" placeholder="Tablolarımı ara" />
-        </nav>
-        <content>
-          <div>
+
+          <div className="search-box">
+            <span class="material-symbols-outlined">search</span>
+            <input type="search" placeholder="Tablolarımı ara" />
+          </div>
+        </div>
+
+        <div className="bottom-line">
+
+        </div>
+
+
+          <div className="content">
             {/*<img src={tablesImg} alt="company photos" />*/}
             <span class="material-symbols-outlined">star</span>
 
@@ -26,7 +33,6 @@ const Home = () => {
             <Link to="/table">Company tables</Link>
 
           </div>
-        </content>
 
       </main>
     </Fragment>
