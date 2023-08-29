@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <Fragment>
-      <div>
+      <div className="main">
         {showNavbar ? (
           <div className="up-content">
             <div className="update-button">
