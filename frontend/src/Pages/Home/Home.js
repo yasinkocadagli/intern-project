@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 import "./Home.css";
 
@@ -22,7 +23,8 @@ const Home = () => {
             <span class="material-symbols-outlined">star</span>
 
             <input type="checkbox" />
-            <p>Company tables</p>
+            <Link to="/table">Company tables</Link>
+
           </div>
         </div>
 
