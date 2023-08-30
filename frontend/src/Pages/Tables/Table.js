@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import TablesHeader from "../../components/Header/TablesHeader";
+import "./Table.css";
 
 const Table = () => {
   return (
