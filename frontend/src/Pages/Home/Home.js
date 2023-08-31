@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -71,7 +72,8 @@ const Home = () => {
                   onChange={() => showNavbarHandler(index)}
                   checked={selectedTableIds.includes(index)}
                 />
-                {tables.name}
+                <Link to='/table' >{tables.name}</Link>
+                
               </li>
             ))}
           </ul>

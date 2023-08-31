@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import myImages from "../../../src/assets/profilepicture.jpg";
 import tablelogo from "../../../src/assets/jotformLogo.svg";
 import "./TablesHeader.css";
+import { Link } from "react-router-dom";
 
 const TablesHeader = () => {
   return (
@@ -22,7 +23,15 @@ const TablesHeader = () => {
         {/* LOGO END*/}
 
         <div className="table-mid-content">
-          <img src={"https://plus.unsplash.com/premium_photo-1677620678338-81c1a71baff7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29tcGFueXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"} alt="users profile " />
+          <Link to="/">
+            {" "}
+            <img
+              src={
+                "https://plus.unsplash.com/premium_photo-1677620678338-81c1a71baff7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29tcGFueXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+              }
+              alt="users profile "
+            />
+          </Link>
           <p>Company Tables</p>
           <span class="material-symbols-outlined">expand_circle_down</span>
         </div>
@@ -39,7 +48,6 @@ const TablesHeader = () => {
 
           <img src={myImages} alt="users profile " />
         </div>
-
       </header>
     </Fragment>
   );
