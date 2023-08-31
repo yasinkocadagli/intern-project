@@ -1,45 +1,46 @@
 import React, { Fragment } from "react";
-import myImage from "../../../src/assets/profilepicture.jpg";
-import logo from "../../../src/assets/jotformLogo.svg";
+import myImages from "../../../src/assets/profilepicture.jpg";
+import tablelogo from "../../../src/assets/jotformLogo.svg";
 import "./TablesHeader.css";
 
 const TablesHeader = () => {
   return (
     <Fragment>
-      {/* HEADER BEGIN */}
-      <header className="header">
+      <header className="table-header">
         {/* LOGO BEGIN */}
-        <div className="logo-container">
-          <span className="logo-side">
-            <img src={logo} alt="company logo" />
+        <div className="table-logo-container">
+          <span className="table-logo-side">
+            <img src={tablelogo} alt="company logo" />
           </span>
-          <div className="logo-divider"></div>
-          <div className="logo-side-text">
+          <div className="table-logo-divider"></div>
+
+          <div className="table-logo-side-text">
             <p>Tablolar</p>
             <span class="material-symbols-outlined">expand_circle_down</span>
-
-            {/* Buraya ikon ekle */}
           </div>
         </div>
         {/* LOGO END*/}
-        <div>
-          {/* <img src={myImage} alt="users profile " />*/}
+
+        <div className="table-mid-content">
+          <img src={"https://plus.unsplash.com/premium_photo-1677620678338-81c1a71baff7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29tcGFueXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"} alt="users profile " />
           <p>Company Tables</p>
           <span class="material-symbols-outlined">expand_circle_down</span>
         </div>
 
-        <div className="header-right-content">
+        <div className="table-header-right-content">
           <button>
             <span class="material-symbols-outlined">share</span>
             Paylaş
           </button>
           <button>
-            <span class="material-symbols-outlined">help</span>Yardım
+            <span class="material-symbols-outlined">help</span>
+            Yardım
           </button>
-          <img src={myImage} alt="users profile " />
+
+          <img src={myImages} alt="users profile " />
         </div>
+
       </header>
-      {/* HEADER END */}
     </Fragment>
   );
 };
