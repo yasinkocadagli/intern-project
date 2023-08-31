@@ -1,19 +1,32 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
 
 import "./Home.css";
 
 const Home = () => {
-  const [showNavbar, setShowNavbar] = useState(true);
-  const showNavbarhandler = (e) => {
-    e.preventDefault();
-    setShowNavbar(!showNavbar);
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [selectedTableIndex, setSelectedTableIndex] = useState([]);
+
+  const showNavbarHandler = (index) => {
+    if (selectedTableIndex === index) {
+
+      setSelectedTableIndex({...selectedTableIndex,index});
+      setShowNavbar(false);
+    } else {
+      setSelectedTableIndex(index);
+      setShowNavbar(true);
+    }
+    console.log(selectedTableIndex);
   };
+
+  const tableContents = [
+    { name: "Company Tables", checked: false },
+    { name: "Music Tables", checked: false },
+  ];
 
   return (
     <Fragment>
       <div className="main">
-        {showNavbar ? (
+        {!showNavbar ? (
           <div className="up-content">
             <div className="update-button">
               <button>
@@ -49,15 +62,22 @@ const Home = () => {
 
         <div className="bottom-line"></div>
         <div className="content">
-          {/*<img src={tablesImg} alt="company photos" />*/}
-          <span className="material-symbols-outlined">star</span>
-
-          <input type="checkbox" onClick={showNavbarhandler} />
-          <Link to="/table">Company tables</Link>
+          <ul className="table-list">
+            {tableContents.map((tables, index) => (
+              <li key={index}>
+                <span className="material-symbols-outlined">star</span>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  onClick={() => showNavbarHandler(index)}
+                  checked={selectedTableIndex === index}
+                />
+                {tables.name}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-
-
     </Fragment>
   );
 };
