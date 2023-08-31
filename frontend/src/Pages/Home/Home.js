@@ -40,7 +40,7 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div>
+          <div className="mid-buttons">
             <button>
               <span className="material-symbols-outlined">groups</span>Move to team
             </button>
@@ -54,7 +54,7 @@ const Home = () => {
               <span className="material-symbols-outlined">inbox</span>Archive
             </button>
             <button>
-              <span className="material-symbols-outlined">delete</span>Delete
+              <span className="material-symbols-outlined delete-button">delete</span>Move to Trash
             </button>
           </div>
         )}
