@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-table {
+  display: flex;
+  background: #258727;
+  height: 88px;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.tables {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  padding: 0px 10px;
+  background: #f6f6f6;
+  height: 70px;
+  position: relative;
+  bottom: 0; /* Alt kenara hizala */
+  left: 0;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.tables span {
+  margin-right: 20px;
+}
+
+.tables p {
+  margin-right: 20px;
+  color: #000;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.tables button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.add-tab {
+  border-radius: 6px 6px 0px 0px;
+  background: #74bd76;
+  position: absolute;
+  bottom: 0; /* Alt kenara hizala */
+  left: 252px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 10px 50px 10px 20px;
+  cursor: pointer;
+}
+
+.add-tab button {
+  border: none;
+  background: none;
+  color: #fff;
+  margin-right: 20px;
+}
+
+.add-tab p {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.table-main {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #000;
+  margin: 20px 1100px 0px 20px;
+  border-radius: 6px;
+}
+
+.table-searchbox {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.table-searchbox span {
+  padding: 12px 8px 12px 12px;
+  color: #938888;
+  cursor: pointer;
+}
+
+.table-searchbox input {
+  border: none;
+  outline: none;
+}
+
+.table-searchbox:focus-within {
+    outline: none;
+    border: 1px solid #e4e4e4;
+  }
+
+.table-filter {
+  display: flex;
+  padding: 15px;
+}
+
+.table-filter p {
+  margin-right: 10px;
+  color: #938888;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.table-filter span {
+    cursor: pointer;
+}
