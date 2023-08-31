@@ -10,6 +10,8 @@ const Sidebar = () => {
         <div className="table-creat ">
           <button className="first-button">Tablo oluştur</button>
         </div>
+        
+        
 
         <div className="all-section">
           <p>Tablolarım</p>
