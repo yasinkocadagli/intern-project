@@ -13,7 +13,7 @@ const Home = () => {
     setSelectedTableIds(newSelectedTableIds);
 
     setShowNavbar(
-      newSelectedTableIds.length === 0 ? false : true
+      newSelectedTableIds.length === 0 ? false : true 
     );
   };
 
