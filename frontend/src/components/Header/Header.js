@@ -6,8 +6,8 @@ const Header = () => {
   const [avatarUrl, setAvatarUrl] = useState('');
   
   useEffect(() => {
-    // Sunucudan avatar URL'sini alın ve state'i güncelleyin
-    fetch('/path/to/get-avatar.php') // get-avatar.php dosyanızın yoluna göre düzenleyin
+    
+    fetch('/../../../../backend/get-avatar.php') 
       .then(response => response.json())
       .then(data => setAvatarUrl(data.avatarUrl))
       .catch(error => console.error('Error fetching avatar URL:', error));
