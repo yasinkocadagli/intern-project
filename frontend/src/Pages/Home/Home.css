@@ -1,97 +1,141 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .up-content {
-    display: flex;
-    padding: 25px 27px;
-    justify-content: flex-end;
-    width: 1188px;
-  }
-  
-  .main {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .search-box {
-    display: flex;
-    align-items: center;
-    width: 170px;
-    height: 50px;
-    border: 1px solid #f1f1f1;
-    border-radius: 5px;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 6px;
-    background: #f4f4f4;
-    font-family: Poppins;
-  }
-  
-  .update-button {
-    display: flex;
-    align-items: center;
-    width: 170px;
-    height: 50px;
-    border: 1px solid #bebebe;
-    border-radius: 5px;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 6px;
-    background: #fff;
-    margin-right: 42px;
-  }
-  
-  .update-button button {
-    background: #fff;
-    border: none;
-    display: flex;
-    align-items: center;
-    color: #000;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.72px;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .update-button .material-symbols-outlined {
-    margin-right: 10px;
-  }
-  
-  .search-box .material-symbols-outlined {
-    margin-right: 5px;
-    width: 24px;
-    height: 24px;
-    color: #938888;
-    cursor: pointer;
-  }
-  
-  input[type="search"] {
-    height: 100%;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.72px;
-    padding: 0px 10px;
-  }
-  
-  .bottom-line {
-    border-bottom: 1px solid #d1d1d1;
-    width: 1241px;
-  }
-  
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  margin: 0;
+  padding: 0;
+}
+
+.up-content {
+  display: flex;
+  padding: 25px 27px;
+  justify-content: flex-end;
+  width: 1188px;
+}
+
+.main {
+  margin: 0;
+  padding: 0;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 170px;
+  height: 50px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #f4f4f4;
+  font-family: Poppins;
+}
+
+.update-button {
+  display: flex;
+  align-items: center;
+  width: 170px;
+  height: 50px;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #fff;
+  margin-right: 42px;
+}
+
+.update-button button {
+  background: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.72px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.update-button .material-symbols-outlined {
+  margin-right: 10px;
+}
+
+.search-box .material-symbols-outlined {
+  margin-right: 5px;
+  width: 24px;
+  height: 24px;
+  color: #938888;
+  cursor: pointer;
+}
+
+input[type="search"] {
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.72px;
+  padding: 0px 10px;
+}
+
+.bottom-line {
+  border-bottom: 1px solid #d1d1d1;
+  width: 1241px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mid-buttons {
+  display: flex;
+  align-items: center;
+  padding: 14px 50px;
+  margin: 0;
+}
+
+.mid-buttons button {
+  display: flex;
+  align-items: center;
+  margin-right: 36px;
+  width: 140px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #a89b9b;
+  background: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.mid-buttons button:last-child {
+  color: #AE0F0F;
+}
+
+.mid-buttons button:hover {
+  background: #f2efef;
+}
+
+.mid-buttons button:last-child:hover {
+  background:#f8b0b0;
+}
+
+.mid-buttons span {
+  margin-left: 8px;
+  margin-right: 10px;
+}
+
+.delete-button {
+  color: #AE0F0F;
+}
