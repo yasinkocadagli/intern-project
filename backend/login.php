@@ -2,11 +2,11 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     
     $data = array(
-        'username' => $username,
+        'username' => $email,
         'password' => $password
     );
     
@@ -27,7 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $apiKey = $responseData['content']['access_token'];
             $_SESSION['apiKey'] = $apiKey;
             
-            header("Location: get-image.php");
+            // Avatar URL'yi session'a ekle
+            $_SESSION['avatarUrl'] = $responseData['content']['avatarUrl'];
+            
+            header("Location: pages.php");
             exit;
         } else {
             echo "Oturum Açma Başarısız.";
@@ -41,12 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Oturum Açma Formu</title>
+    
 </head>
 <body>
     <form method="post" action="">
-        <label for="username">Kullanıcı Adı:</label>
-        <input type="text" name="username" required><br><br>
+        <label for="email">E-posta:</label>
+        <input type="email" name="email" required><br><br>
         
         <label for="password">Şifre:</label>
         <input type="password" name="password" required><br><br>
