@@ -4,18 +4,17 @@ import "./Home.css";
 
 const Home = () => {
   const [showNavbar, setShowNavbar] = useState(false);
-  const [selectedTableIndex, setSelectedTableIndex] = useState([]);
+  const [selectedTableIds, setSelectedTableIds] = useState([]);
 
   const showNavbarHandler = (index) => {
-    if (selectedTableIndex === index) {
+    const newSelectedTableIds = selectedTableIds.includes(index)
+      ? selectedTableIds.filter((id) => id !== index)
+      : [...selectedTableIds, index];
+    setSelectedTableIds(newSelectedTableIds);
 
-      setSelectedTableIndex({...selectedTableIndex,index});
-      setShowNavbar(false);
-    } else {
-      setSelectedTableIndex(index);
-      setShowNavbar(true);
-    }
-    console.log(selectedTableIndex);
+    setShowNavbar(
+      newSelectedTableIds.length === 0 ? false : true
+    );
   };
 
   const tableContents = [
@@ -43,19 +42,19 @@ const Home = () => {
         ) : (
           <div>
             <button>
-              <span class="material-symbols-outlined">groups</span>Move to team
+              <span className="material-symbols-outlined">groups</span>Move to team
             </button>
             <button>
-              <span class="material-symbols-outlined">edit</span>Edit
+              <span className="material-symbols-outlined">edit</span>Edit
             </button>
             <button>
-              <span class="material-symbols-outlined">share</span>Share
+              <span className="material-symbols-outlined">share</span>Share
             </button>
             <button>
-              <span class="material-symbols-outlined">inbox</span>Archive
+              <span className="material-symbols-outlined">inbox</span>Archive
             </button>
             <button>
-              <span class="material-symbols-outlined">delete</span>Delete
+              <span className="material-symbols-outlined">delete</span>Delete
             </button>
           </div>
         )}
@@ -68,9 +67,9 @@ const Home = () => {
                 <span className="material-symbols-outlined">star</span>
                 <input
                   type="checkbox"
-                  defaultChecked={false}
-                  onClick={() => showNavbarHandler(index)}
-                  checked={selectedTableIndex === index}
+                  value={index}
+                  onChange={() => showNavbarHandler(index)}
+                  checked={selectedTableIds.includes(index)}
                 />
                 {tables.name}
               </li>
