@@ -8,14 +8,14 @@ if (isset($_SESSION['tableNumber'])) {
     $_SESSION['tableNumber'] = 0;
 }
 
-$tableName = "new_table" . $_SESSION['tableNumber'];
+$tableName = "tables" . $_SESSION['tableNumber'];
 
-$sql = "CREATE TABLE IF NOT EXISTS $tableName (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    notes TEXT
-)";
+$sql = "INSERT INTO  tables (
+    title,
+    imageUrl,
+    category 
+) VALUES ('{$tableName}','{imageUrl}','{category}')";
+
 
 if ($conn->query($sql) === TRUE) {
     echo "Table created successfully: $tableName";
