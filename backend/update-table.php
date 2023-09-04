@@ -24,8 +24,14 @@ if(isset($_GET['id'])){
         $params[] = $imageid;
     }
 
+    if(isset($_GET['isfavorite'])){
+        $isfavorite = intval($_GET['isfavorite']);
+        $update_query .= "isfavorite = ?, ";
+        $params[] = $isfavorite;
+    }
+
     if (empty($params)) {
-        echo json_encode(array("message" => "Hiçbir parametre güncellenmedi."));
+        echo json_encode(array("message" => "No parameters were updated."));
     } else {
         
         $update_query = rtrim($update_query, ", ") . " WHERE id = ?";
@@ -39,18 +45,18 @@ if(isset($_GET['id'])){
             $stmt->bind_param($types, ...$params);
 
             if ($stmt->execute()) {
-                echo json_encode(array("message" => "Tablo başarıyla güncellendi."));
+                echo json_encode(array("message" => "Table updated successfully."));
             } else {
-                echo json_encode(array("message" => "Tablo güncellenirken bir hata oluştu: " . $stmt->error));
+                echo json_encode(array("message" => "An error occurred while updating the table: " . $stmt->error));
             }
 
             $stmt->close();
         } else {
-            echo json_encode(array("message" => "Hazır ifade oluşturulurken bir hata oluştu: " . $conn->error));
+            echo json_encode(array("message" => "An error occurred while preparing the statement: " . $conn->error));
         }
     }
 } else {
-    echo json_encode(array("message" => "Güncelleme için gerekli parametreler eksik."));
+    echo json_encode(array("message" => "Required parameters for updating are missing."));
 }
 
 mysqli_close($conn);
