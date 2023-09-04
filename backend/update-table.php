@@ -2,34 +2,24 @@
 include('db.php');
 
 if(isset($_GET['id'])){
-    
-    $table_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-
-    if ($table_id === false || $table_id <= 0) {
-        echo json_encode(array("message" => "Geçersiz table_id değeri."));
-        exit;
-    }
-
+    $table_id = $_GET['id'];
     $update_query = "UPDATE tables SET ";
     $params = array();
 
     if(isset($_GET['title'])){
-        
-        $title = filter_var($_GET['title'], FILTER_SANITIZE_STRING);
+        $title = $_GET['title'];
         $update_query .= "title = ?, ";
         $params[] = $title;
     }
 
     if(isset($_GET['category'])){
-        
-        $category = filter_var($_GET['category'], FILTER_SANITIZE_STRING);
+        $category = $_GET['category'];
         $update_query .= "category = ?, ";
         $params[] = $category;
     }
 
     if(isset($_GET['imageid'])){
-        
-        $imageid = filter_var($_GET['imageid'], FILTER_SANITIZE_NUMBER_INT);
+        $imageid = $_GET['imageid'];
         $update_query .= "imageid = ?, ";
         $params[] = $imageid;
     }
