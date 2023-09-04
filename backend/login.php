@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Gelen verileri temizleme
+    
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     
@@ -35,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $_SESSION['avatarUrl'] = $responseData['content']['avatarUrl'];
             
-            // Güvenli bir şekilde oturum açıldıktan sonra başka bir sayfaya yönlendirme
+        
             header("Location: pages.php");
             exit;
         } else {
-            echo "Oturum Açma Başarısız.";
+            echo "Login Failed.";
         }
     }
     

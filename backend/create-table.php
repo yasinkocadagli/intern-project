@@ -13,7 +13,7 @@ $category = "company";
 $imageid = 1;
 $isfavorite = 0;
 
-// Sanitize the variables using filter_var
+
 $tableName = filter_var($tableName, FILTER_SANITIZE_STRING);
 $category = filter_var($category, FILTER_SANITIZE_STRING);
 $imageid = filter_var($imageid, FILTER_SANITIZE_NUMBER_INT);
