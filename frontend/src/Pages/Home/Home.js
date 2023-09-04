@@ -10,7 +10,7 @@ const Home = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [selectedTableIds, setSelectedTableIds] = useState([]);
   const [tables, setTables] = useState([]);
-
+  
   const showNavbarHandler = (index) => {
     const newSelectedTableIds = selectedTableIds.includes(index)
       ? selectedTableIds.filter((id) => id !== index)
@@ -20,24 +20,21 @@ const Home = () => {
     setShowNavbar(newSelectedTableIds.length === 0 ? false : true);
   };
 
- 
+  const changeStarColor = (index) => {
+    const newTables = [...tables];
+    newTables[index].starColor = newTables[index].starColor === "#FFB629" ? "#c8ceed" : "#FFB629";
+    setTables(newTables);
+  };
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost/backend/get-tables.php")
-  //     .then((response) => {
-  //       setTables(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("error fetching data", error);
-  //     });
-  // }, []);
-
-    useEffect(() => {
+  useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
       .then((response) => {
-        setTables(response.data);
+        const initialTables = response.data.map((table) => ({
+          ...table,
+          starColor: "#c8ceed", // Başlangıçta yıldız rengi
+        }));
+        setTables(initialTables);
       })
       .catch((error) => {
         console.error("error fetching data", error);
@@ -86,34 +83,34 @@ const Home = () => {
         )}
 
         <div className="bottom-line"></div>
+
         <div className="content">
-          {/* <ul className="table-list">
-            {tables.map((tables, index) => (
-              <li key={index}>
-                <span className="material-symbols-outlined">star</span>
-                <input
-                  type="checkbox"
-                  value={index}
-                  onChange={() => showNavbarHandler(index)}
-                  checked={selectedTableIds.includes(index)}
-                />
-                {tables.title}
-                <Link to="/table"> <img src={myImage} alt="" /></Link>
-              </li>
-            ))}
-          </ul> */}
           <ul className="table-list">
-            {tables.map((tables, index) => (
-              <li key={index}>
-                <span className="material-symbols-outlined">star</span>
+            {tables.map((table, index) => (
+              <li className="table-item" key={index}>
                 <input
                   type="checkbox"
                   value={index}
                   onChange={() => showNavbarHandler(index)}
                   checked={selectedTableIds.includes(index)}
                 />
-                {tables.category}
-                <Link to="/table"> <img src={myImage} alt="" /></Link>
+                <span
+                  className="material-symbols-outlined"
+                  style={{ color: table.starColor }} 
+                  onClick={() => changeStarColor(index)} // Yıldıza tıklamada rengi değiştir
+                >
+                  star
+                </span>
+                <div className="table-link">
+                  <Link to="/table">
+                    <img src={myImage} alt="" />
+                    <span className="table-category">{table.category}</span>
+                  </Link>
+                </div>
+                <div className="more-side">
+                  <h1>More</h1>
+                  <button className="material-symbols-outlined">expand_more</button>
+                </div>
               </li>
             ))}
           </ul>
