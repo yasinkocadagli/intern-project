@@ -9,41 +9,31 @@ FROM tables t1
 LEFT JOIN images t2 ON (t1.`imageid`=t2.`id`)
 EOF;
 
-$stmt = null; 
 
 if(isset($_GET['imageid']) && isset($_GET['category'])){
-    
-    $imageid = filter_var($_GET['imageid'], FILTER_SANITIZE_NUMBER_INT);
-    $category = filter_var($_GET['category'], FILTER_SANITIZE_STRING);
+    $imageid=$_GET['imageid'];
 
-    $query .= " WHERE imageid = ? AND category = ?";
-    
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("is", $imageid, $category);
+    $query.=" WHERE imageid='{$imageid}'";
+
 }
+
 elseif(isset($_GET['category'])){
-    
-    $category = filter_var($_GET['category'], FILTER_SANITIZE_STRING);
-    $query .= " WHERE category = ?";
-    
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $category);
+    $category=$_GET['category'];
+
+    $query.=" WHERE category='{$category}'";
+
 }
 elseif(isset($_GET['imageid'])){
-    
-    $imageid = filter_var($_GET['imageid'], FILTER_SANITIZE_NUMBER_INT);
-    $query .= " WHERE imageid = ?";
-    
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $imageid);
+    $imageid=$_GET['imageid'];
+
+    $query.=" WHERE imageid='{$imageid}'";
+
 }
 
-if (!$stmt) {
-    die("Hazır ifade oluşturulurken bir hata oluştu: " . $conn->error);
-}
 
-$stmt->execute();
-$result = $stmt->get_result();
+$result = mysqli_query($conn, $query);
+
+
 
 if (!$result) {
     die("Error retrieving tables: " . mysqli_error($conn));
@@ -54,8 +44,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $tables[] = $row;
 }
 
-$stmt->close();
-$conn->close();
+mysqli_free_result($result);
+mysqli_close($conn);
 echo json_encode($tables);
 exit;
 ?>
