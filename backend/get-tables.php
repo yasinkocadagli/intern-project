@@ -1,6 +1,7 @@
 <?php
 include('db.php'); 
 
+
 $query =<<<EOF
 SELECT
 t1.*,
@@ -10,18 +11,35 @@ LEFT JOIN images t2 ON (t1.`imageid`=t2.`id`)
 EOF;
 
 
+if(isset($_GET['imageid']) && isset($_GET['category'])){
+    $imageid = intval($_GET['imageid']);
+    $category = mysqli_real_escape_string($conn, $_GET['category']);
 
-if(isset($_GET['category'])){
-    $category=$_GET['category'];
-
-    $query.=" WHERE category='{$category}'";
-
+    
+    $query .= " WHERE imageid = ? AND category = ?";
+    
+    
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("is", $imageid, $category);
+}
+elseif(isset($_GET['category'])){
+    $category = mysqli_real_escape_string($conn, $_GET['category']);
+    $query .= " WHERE category = ?";
+    
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $category);
+}
+elseif(isset($_GET['imageid'])){
+    $imageid = intval($_GET['imageid']);
+    $query .= " WHERE imageid = ?";
+    
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $imageid);
 }
 
 
-$result = mysqli_query($conn, $query);
-
-
+$stmt->execute();
+$result = $stmt->get_result();
 
 if (!$result) {
     die("Error retrieving tables: " . mysqli_error($conn));
@@ -32,9 +50,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $tables[] = $row;
 }
 
-mysqli_free_result($result);
-mysqli_close($conn);
+$stmt->close();
+$conn->close();
 echo json_encode($tables);
 exit;
-
-
+?>
