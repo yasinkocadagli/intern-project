@@ -2,7 +2,12 @@
 include('db.php');
 
 if(isset($_GET['id'])){
-    $table_id = $_GET['id'];
+    $table_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+
+    if ($table_id <= 0) {
+        echo json_encode(array("message" => "Invalid 'id' value."));
+        exit;
+    }
 
     $update_query = "UPDATE tables SET isfavorite = 1 WHERE id = ?";
     

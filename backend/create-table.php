@@ -1,6 +1,4 @@
 <?php
-
-
 include('db.php');
 session_start();
 
@@ -13,16 +11,16 @@ if (isset($_SESSION['tableNumber'])) {
 $tableName = "tables" . $_SESSION['tableNumber'];
 $category = "company";
 $imageid = 1;
-
-
 $isfavorite = 0;
+
+// Sanitize the variables using filter_var
+$tableName = filter_var($tableName, FILTER_SANITIZE_STRING);
+$category = filter_var($category, FILTER_SANITIZE_STRING);
+$imageid = filter_var($imageid, FILTER_SANITIZE_NUMBER_INT);
+$isfavorite = filter_var($isfavorite, FILTER_SANITIZE_NUMBER_INT);
 
 $stmt = $conn->prepare("INSERT INTO tables (title, category, imageid, isfavorite) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssii", $tableName, $category, $imageid, $isfavorite);
-
-$tableName = "tables" . $_SESSION['tableNumber'];
-$category = "company";
-$imageid = 1;
 
 if ($stmt->execute()) {
     echo "Table created successfully: $tableName";
@@ -34,7 +32,4 @@ $stmt->close();
 $conn->close();
 
 header("Location: pages.php");
-
-
-
 ?>
