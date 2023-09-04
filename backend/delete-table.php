@@ -10,10 +10,8 @@ if(isset($_GET['id'])){
         exit;
     }
 
- 
     $delete_query = "DELETE FROM tables WHERE id = ?";
 
-    
     $stmt = $conn->prepare($delete_query);
     $stmt->bind_param("i", $table_id);
 

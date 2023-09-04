@@ -1,4 +1,6 @@
 <?php
+
+
 include('db.php');
 session_start();
 
@@ -13,9 +15,10 @@ $category = "company";
 $imageid = 1;
 
 
-$stmt = $conn->prepare("INSERT INTO tables (title, category, imageid) VALUES (?, ?, ?)");
-$stmt->bind_param("ssi", $tableName, $category, $imageid);
+$isfavorite = 0;
 
+$stmt = $conn->prepare("INSERT INTO tables (title, category, imageid, isfavorite) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssii", $tableName, $category, $imageid, $isfavorite);
 
 $tableName = "tables" . $_SESSION['tableNumber'];
 $category = "company";
@@ -31,4 +34,7 @@ $stmt->close();
 $conn->close();
 
 header("Location: pages.php");
+
+
+
 ?>

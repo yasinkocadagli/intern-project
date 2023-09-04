@@ -1,40 +1,32 @@
 <?php
 header("Access-Control-Allow-Origin: http://localhost:3000");
-include('db.php'); 
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+include('db.php');
 
-$query =<<<EOF
-SELECT
-t1.*,
-t2.imageUrl
-FROM tables t1 
-LEFT JOIN images t2 ON (t1.`imageid`=t2.`id`)
-EOF;
+$query = "SELECT t1.*, t2.imageUrl FROM tables t1 LEFT JOIN images t2 ON (t1.imageid = t2.id) WHERE 1";
 
-
-if(isset($_GET['imageid']) && isset($_GET['category'])){
-    $imageid=$_GET['imageid'];
-
-    $query.=" WHERE imageid='{$imageid}'";
-
+if (isset($_GET['title'])) {
+    $title = mysqli_real_escape_string($conn, $_GET['title']);
+    $query .= " AND t1.title = '{$title}'";
 }
 
-elseif(isset($_GET['category'])){
-    $category=$_GET['category'];
-
-    $query.=" WHERE category='{$category}'";
-
-}
-elseif(isset($_GET['imageid'])){
-    $imageid=$_GET['imageid'];
-
-    $query.=" WHERE imageid='{$imageid}'";
-
+if (isset($_GET['category'])) {
+    $category = mysqli_real_escape_string($conn, $_GET['category']);
+    $query .= " AND t1.category = '{$category}'";
 }
 
+if (isset($_GET['imageid'])) {
+    $imageid = intval($_GET['imageid']);
+    $query .= " AND t1.imageid = {$imageid}";
+}
+
+if (isset($_GET['isfavorite'])) {
+    $isfavorite = intval($_GET['isfavorite']);
+    $query .= " AND t1.isfavorite = {$isfavorite}";
+}
 
 $result = mysqli_query($conn, $query);
-
-
 
 if (!$result) {
     die("Error retrieving tables: " . mysqli_error($conn));
