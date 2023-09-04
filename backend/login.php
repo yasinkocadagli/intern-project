@@ -2,8 +2,14 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    // Gelen verileri temizleme
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    
+    if ($email === false || empty($password)) {
+        echo "Geçersiz e-posta veya şifre.";
+        exit;
+    }
     
     $data = array(
         'username' => $email,
@@ -19,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response = curl_exec($ch);
     
     if ($response === false) {
-        echo "cURL Error: " . curl_error($ch);
+        echo "cURL Hatası: " . curl_error($ch);
     } else {
         $responseData = json_decode($response, true);
         
@@ -27,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $apiKey = $responseData['content']['access_token'];
             $_SESSION['apiKey'] = $apiKey;
             
-            
             $_SESSION['avatarUrl'] = $responseData['content']['avatarUrl'];
             
+            // Güvenli bir şekilde oturum açıldıktan sonra başka bir sayfaya yönlendirme
             header("Location: pages.php");
             exit;
         } else {

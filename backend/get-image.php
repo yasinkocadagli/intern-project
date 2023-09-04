@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// İzin verilen domainlerin listesini burada güncelleyin
+
 $allowedDomains = array('http://localhost:3000');
 
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedDomains)) {
