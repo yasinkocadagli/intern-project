@@ -22,9 +22,20 @@ const Home = () => {
 
  
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost/backend/get-tables.php")
+  //     .then((response) => {
+  //       setTables(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("error fetching data", error);
+  //     });
+  // }, []);
+
+    useEffect(() => {
     axios
-      .get("http://localhost/backend/get-tables.php")
+      .get("https://fakestoreapi.com/products")
       .then((response) => {
         setTables(response.data);
       })
@@ -76,7 +87,7 @@ const Home = () => {
 
         <div className="bottom-line"></div>
         <div className="content">
-          <ul className="table-list">
+          {/* <ul className="table-list">
             {tables.map((tables, index) => (
               <li key={index}>
                 <span className="material-symbols-outlined">star</span>
@@ -87,6 +98,21 @@ const Home = () => {
                   checked={selectedTableIds.includes(index)}
                 />
                 {tables.title}
+                <Link to="/table"> <img src={myImage} alt="" /></Link>
+              </li>
+            ))}
+          </ul> */}
+          <ul className="table-list">
+            {tables.map((tables, index) => (
+              <li key={index}>
+                <span className="material-symbols-outlined">star</span>
+                <input
+                  type="checkbox"
+                  value={index}
+                  onChange={() => showNavbarHandler(index)}
+                  checked={selectedTableIds.includes(index)}
+                />
+                {tables.category}
                 <Link to="/table"> <img src={myImage} alt="" /></Link>
               </li>
             ))}
