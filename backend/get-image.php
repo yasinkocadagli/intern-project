@@ -1,17 +1,23 @@
 <?php
 session_start();
 
+// İzin verilen domainlerin listesini burada güncelleyin
+$allowedDomains = array('http://localhost:3000');
+
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedDomains)) {
+    header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+    header('Access-Control-Allow-Methods: GET');
+    header('Access-Control-Allow-Headers: Content-Type');
+}
+
 if (isset($_SESSION['avatarUrl'])) {
     $avatarUrl = $_SESSION['avatarUrl'];
+} else {
+    $avatarUrl = '';
 }
-?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    
-</head>
-<body>
-    <img src="<?php echo $avatarUrl; ?>" alt="">
-</body>
-</html>
+$response = array('avatarUrl' => $avatarUrl);
+
+header('Content-Type: application/json');
+echo json_encode($response);
+?>
