@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $apiKey = $responseData['content']['access_token'];
             $_SESSION['apiKey'] = $apiKey;
             
-            // Avatar URL'yi session'a ekle
+            
             $_SESSION['avatarUrl'] = $responseData['content']['avatarUrl'];
             
             header("Location: pages.php");
