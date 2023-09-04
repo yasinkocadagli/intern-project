@@ -9,19 +9,26 @@ if (isset($_SESSION['tableNumber'])) {
 }
 
 $tableName = "tables" . $_SESSION['tableNumber'];
-
-$sql = "INSERT INTO  tables (
-    title,
-    imageUrl,
-    category 
-) VALUES ('{$tableName}','{imageUrl}','{category}')";
+$category = "company";
+$imageid = 1;
 
 
-if ($conn->query($sql) === TRUE) {
+$stmt = $conn->prepare("INSERT INTO tables (title, category, imageid) VALUES (?, ?, ?)");
+$stmt->bind_param("ssi", $tableName, $category, $imageid);
+
+
+$tableName = "tables" . $_SESSION['tableNumber'];
+$category = "company";
+$imageid = 1;
+
+if ($stmt->execute()) {
     echo "Table created successfully: $tableName";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating table: " . $stmt->error;
 }
+
+$stmt->close();
+$conn->close();
 
 header("Location: pages.php");
 ?>
