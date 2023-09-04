@@ -144,3 +144,7 @@ input[type="search"] {
 .delete-button {
   color: #AE0F0F;
 }
+
+.table-list img{
+  width: 10%;
+}
