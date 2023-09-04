@@ -1,4 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import myImage from "../../../src/assets/profilepicture.jpg";
+
+import axios from "axios";
 
 import "./Home.css";
 import { Link } from "react-router-dom";
@@ -6,6 +9,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [selectedTableIds, setSelectedTableIds] = useState([]);
+  const [tables, setTables] = useState([]);
 
   const showNavbarHandler = (index) => {
     const newSelectedTableIds = selectedTableIds.includes(index)
@@ -13,15 +17,21 @@ const Home = () => {
       : [...selectedTableIds, index];
     setSelectedTableIds(newSelectedTableIds);
 
-    setShowNavbar(
-      newSelectedTableIds.length === 0 ? false : true 
-    );
+    setShowNavbar(newSelectedTableIds.length === 0 ? false : true);
   };
 
-  const tableContents = [
-    { name: "Company Tables", checked: false },
-    { name: "Music Tables", checked: false },
-  ];
+ 
+
+  useEffect(() => {
+    axios
+      .get("http://localhost/backend/get-tables.php")
+      .then((response) => {
+        setTables(response.data);
+      })
+      .catch((error) => {
+        console.error("error fetching data", error);
+      });
+  }, []);
 
   return (
     <Fragment>
@@ -43,7 +53,8 @@ const Home = () => {
         ) : (
           <div className="mid-buttons">
             <button>
-              <span className="material-symbols-outlined">groups</span>Move to team
+              <span className="material-symbols-outlined">groups</span>Move to
+              team
             </button>
             <button>
               <span className="material-symbols-outlined">edit</span>Edit
@@ -55,7 +66,10 @@ const Home = () => {
               <span className="material-symbols-outlined">inbox</span>Archive
             </button>
             <button>
-              <span className="material-symbols-outlined delete-button">delete</span>Move to Trash
+              <span className="material-symbols-outlined delete-button">
+                delete
+              </span>
+              Move to Trash
             </button>
           </div>
         )}
@@ -63,7 +77,7 @@ const Home = () => {
         <div className="bottom-line"></div>
         <div className="content">
           <ul className="table-list">
-            {tableContents.map((tables, index) => (
+            {tables.map((tables, index) => (
               <li key={index}>
                 <span className="material-symbols-outlined">star</span>
                 <input
@@ -72,8 +86,8 @@ const Home = () => {
                   onChange={() => showNavbarHandler(index)}
                   checked={selectedTableIds.includes(index)}
                 />
-                <Link to='/table' >{tables.name}</Link>
-                
+                {tables.title}
+                <Link to="/table"> <img src={myImage} alt="" /></Link>
               </li>
             ))}
           </ul>
