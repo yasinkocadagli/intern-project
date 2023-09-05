@@ -222,3 +222,10 @@ input[type="search"] {
   background: #fff;
   border: none;
 }
+.dropdown-content{
+  display: flex;
+  flex-direction: column;
+  background: #0a1551;
+}
+
+

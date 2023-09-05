@@ -1,8 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import myImage from "../../../src/assets/profilepicture.jpg";
-
 import axios from "axios";
-
 import "./Home.css";
 import { Link } from "react-router-dom";
 
@@ -10,19 +8,31 @@ const Home = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [selectedTableIds, setSelectedTableIds] = useState([]);
   const [tables, setTables] = useState([]);
-  
+
+  const [expandedIndex, setExpandedIndex] = useState(-1);
+  const [tableDropdownStates, setTableDropdownStates] = useState([]);
+
+  const toggleDropdown = (index) => {
+    if (expandedIndex === index) {
+      setExpandedIndex(-1);
+    } else {
+      setExpandedIndex(index);
+    }
+  };
+
+
   const showNavbarHandler = (index) => {
     const newSelectedTableIds = selectedTableIds.includes(index)
       ? selectedTableIds.filter((id) => id !== index)
       : [...selectedTableIds, index];
     setSelectedTableIds(newSelectedTableIds);
-
     setShowNavbar(newSelectedTableIds.length === 0 ? false : true);
   };
 
   const changeStarColor = (index) => {
     const newTables = [...tables];
-    newTables[index].starColor = newTables[index].starColor === "#FFB629" ? "#c8ceed" : "#FFB629";
+    newTables[index].starColor =
+      newTables[index].starColor === "#FFB629" ? "#c8ceed" : "#FFB629";
     setTables(newTables);
   };
 
@@ -32,9 +42,10 @@ const Home = () => {
       .then((response) => {
         const initialTables = response.data.map((table) => ({
           ...table,
-          starColor: "#c8ceed", // Başlangıçta yıldız rengi
+          starColor: "#c8ceed",
         }));
         setTables(initialTables);
+        setTableDropdownStates(Array(initialTables.length).fill(false));
       })
       .catch((error) => {
         console.error("error fetching data", error);
@@ -96,21 +107,35 @@ const Home = () => {
                 />
                 <span
                   className="material-symbols-outlined"
-                  style={{ color: table.starColor }} 
-                  onClick={() => changeStarColor(index)} // Yıldıza tıklamada rengi değiştir
+                  style={{ color: table.starColor }}
+                  onClick={() => changeStarColor(index)}
                 >
                   star
                 </span>
                 <div className="table-link">
                   <Link to="/table">
                     <img src={myImage} alt="" />
-                    <span className="table-category">{table.category}</span>
                   </Link>
+                  <span className="table-category">{table.category}</span>
                 </div>
                 <div className="more-side">
-                  <h1>More</h1>
-                  <button className="material-symbols-outlined">expand_more</button>
+                  <p>More</p>
+                  <button
+                    onClick={() => toggleDropdown(index)}
+                    className="material-symbols-outlined"
+                  >
+                    expand_more
+                  </button>
+                  {expandedIndex === index && (
+                    <div className="dropdown-content">
+                      <button>Düzenle</button>
+                      <button>Arşivle</button>
+                      <button>Paylaş</button>
+                      <button>Sil</button>
+                    </div>
+                  )}
                 </div>
+                <div></div>
               </li>
             ))}
           </ul>
