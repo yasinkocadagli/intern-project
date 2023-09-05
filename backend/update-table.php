@@ -41,7 +41,7 @@ if(isset($_GET['id'])){
             $params[] = $isfavorite;
         }
     }
-
+    
     if (empty($params)) {
         echo json_encode(array("message" => "No valid parameters were updated."));
     } else {

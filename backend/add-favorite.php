@@ -25,5 +25,4 @@ if(isset($_GET['id'])){
     echo json_encode(array("message" => "Required 'id' parameter is missing."));
 }
 
-mysqli_close($conn);
-?>
+
