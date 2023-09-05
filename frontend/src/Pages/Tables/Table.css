@@ -6,7 +6,7 @@
 .nav-table {
   display: flex;
   background: #258727;
-  height: 88px;
+  height: 60px;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
@@ -18,7 +18,7 @@
   margin-right: 8px;
   padding: 0px 10px;
   background: #f6f6f6;
-  height: 70px;
+  height: 47px;
   position: relative;
   bottom: 0; /* Alt kenara hizala */
   left: 0;
@@ -49,9 +49,9 @@
   border-radius: 6px 6px 0px 0px;
   background: #74bd76;
   position: absolute;
-  bottom: 0; /* Alt kenara hizala */
+  bottom: 0;
   left: 252px;
-  height: 70px;
+  height: 47px;
   display: flex;
   align-items: center;
   padding: 10px 50px 10px 20px;
@@ -68,7 +68,7 @@
 .add-tab p {
   color: #fff;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
