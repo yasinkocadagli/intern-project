@@ -10,7 +10,6 @@ const Home = () => {
   const [tables, setTables] = useState([]);
 
   const [expandedIndex, setExpandedIndex] = useState(-1);
-  const [tableDropdownStates, setTableDropdownStates] = useState([]);
 
   const toggleDropdown = (index) => {
     if (expandedIndex === index) {
@@ -19,7 +18,6 @@ const Home = () => {
       setExpandedIndex(index);
     }
   };
-
 
   const showNavbarHandler = (index) => {
     const newSelectedTableIds = selectedTableIds.includes(index)
@@ -45,7 +43,6 @@ const Home = () => {
           starColor: "#c8ceed",
         }));
         setTables(initialTables);
-        setTableDropdownStates(Array(initialTables.length).fill(false));
       })
       .catch((error) => {
         console.error("error fetching data", error);
@@ -127,15 +124,14 @@ const Home = () => {
                     expand_more
                   </button>
                   {expandedIndex === index && (
-                    <div className="dropdown-content">
-                      <button>Düzenle</button>
-                      <button>Arşivle</button>
-                      <button>Paylaş</button>
-                      <button>Sil</button>
-                    </div>
+                    <ul className="dropdown-content">
+                      <li><p>Paylaş</p></li>
+                      <li><p>Düzenle</p></li>
+                      <li><p>Arşivle</p></li>
+                      <li><p>Sil</p></li>
+                    </ul>
                   )}
                 </div>
-                <div></div>
               </li>
             ))}
           </ul>
