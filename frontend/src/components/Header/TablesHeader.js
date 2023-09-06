@@ -23,7 +23,7 @@ const TablesHeader = () => {
         {/* LOGO END*/}
 
         <div className="table-mid-content">
-          <Link to="/">
+          <Link to="/layout">
             {" "}
             <img
               src={

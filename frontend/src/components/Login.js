@@ -69,7 +69,7 @@ const Login = () => {
         <div>
           <button >Login</button>
           <p>Dont't have an account</p>
-          <Link> Sign up</Link>
+          <Link to="/layout"> Sign up</Link>
         </div>
       </form>
     </div>
