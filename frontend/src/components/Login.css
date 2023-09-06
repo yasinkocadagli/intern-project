@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    width: 700px;
+    height: 600px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    position: relative;
+  }
+  
+  .cancel-icon {
+    color: #c2c2d0;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .cancel-icon:hover {
+    color: #aaaab7;
+  }
+  
+  .login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-content h2 {
+    color: #000;
+    font-family: "Open Sans", sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 30px 0px 20px 0px;
+  }
+  
+  .info-prg {
+    color: #000;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 70px;
+  }
+  
+  .email-password {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0px 20px;
+  }
+  
+  .email-password input {
+    width: 356px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #b5bcc5;
+    background: #fff;
+    outline: none;
+  }
+  
+  .email-password input:hover {
+    background: #edeff1;
+  }
+  
+  .email-password label {
+    color: #000;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    margin-bottom: 6px;
+  }
+  
+  .email-password p {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
+  
+  .login {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login button {
+    height: 50px;
+    border-radius: 5px;
+    background: #4eb100;
+    border: 1px solid #b5bcc5;
+    color: #fff;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .login button:hover {
+    background: #62e200;
+  }
+  
+  .signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .signup p {
+    margin-right: 10px;
+    color: #3e4652;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+  }
+  
+  .signup h1 {
+    color: #2c75f2;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    cursor: pointer;
+  }
+  
+  .forgot-password {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -14px;
+    margin-right: 10px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    color: #3e4652;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
