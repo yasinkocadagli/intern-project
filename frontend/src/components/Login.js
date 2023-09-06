@@ -65,7 +65,7 @@ const Login = () => {
             <button>Login</button>
             <div className="signup">
               <p>Dont't have an account</p>
-              <h1> Sign up</h1>
+              <Link className="signup-style" to="/layout"> Sign up</Link>
             </div>
           </div>
 
