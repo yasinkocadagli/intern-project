@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import myImage from "../../../src/assets/profilepicture.jpg";
+
 import axios from "axios";
 import "./Home.css";
 import { Link } from "react-router-dom";
@@ -34,20 +34,30 @@ const Home = () => {
     setTables(newTables);
   };
 
-  useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((response) => {
-        const initialTables = response.data.map((table) => ({
-          ...table,
-          starColor: "#c8ceed",
-        }));
-        setTables(initialTables);
-      })
-      .catch((error) => {
-        console.error("error fetching data", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://fakestoreapi.com/products")
+  //     .then((response) => {
+  //       const initialTables = response.data.map((table) => ({
+  //         ...table,
+  //         starColor: "#c8ceed",
+  //       }));
+  //       setTables(initialTables);
+  //     })
+  //     .catch((error) => {
+  //       console.error("error fetching data", error);
+  //     });
+  // }, []);
+
+  useEffect(()=>{
+    axios.get("http://localhost/backend/get-tables.php")
+    .then((response)=>{
+      setTables(response.data)
+    }).catch((error)=>{
+      console.error('error fetching data',error)
+    })
+
+  },[])
 
   return (
     <Fragment>
@@ -111,7 +121,8 @@ const Home = () => {
                 </span>
                 <div className="table-link">
                   <Link to="/table">
-                    <img src={myImage} alt="" />
+                    {/* <img src={myImage} alt="" /> */}
+                    {<img key={index} src={table.imageUrl} alt=" " />}
                   </Link>
                   <span className="table-category">{table.category}</span>
                 </div>
