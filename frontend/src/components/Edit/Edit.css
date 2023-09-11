@@ -1,0 +1,21 @@
+.image img{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+   
+}
+
+.image{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+
+}
+
+.image img:hover {
+    transform: scale(1.1);
+}
