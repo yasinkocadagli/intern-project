@@ -1,16 +1,32 @@
 import React, { Fragment, useEffect, useState } from "react";
-
 import axios from "axios";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import Edit from "../../components/Edit/Edit";
 
 const Home = () => {
   const [showNavbar, setShowNavbar] = useState(false);
-  const [selectedTableIds, setSelectedTableIds] = useState([]);
+  const [selectedTableId, setSelectedTableId] = useState(null);
   const [tables, setTables] = useState([]);
-
   const [expandedIndex, setExpandedIndex] = useState(-1);
+  const [isEditing, setIsEditing] = useState(false);
 
+  const handleTableSelect = (tableId) => {
+    setSelectedTableId(tableId);
+  };
+
+
+
+  const editchangeHandler = () => {
+    setIsEditing((prevIsEditing) => !prevIsEditing);
+  };
+
+  
+
+  const showNavbarHandler = (tableId) => {
+    setSelectedTableId((prevTableId) => (prevTableId === tableId ? null : tableId));
+    setShowNavbar(selectedTableId === tableId);
+  };
   const toggleDropdown = (index) => {
     if (expandedIndex === index) {
       setExpandedIndex(-1);
@@ -19,14 +35,7 @@ const Home = () => {
     }
   };
 
-  const showNavbarHandler = (index) => {
-    const newSelectedTableIds = selectedTableIds.includes(index)
-      ? selectedTableIds.filter((id) => id !== index)
-      : [...selectedTableIds, index];
-    setSelectedTableIds(newSelectedTableIds);
-    setShowNavbar(newSelectedTableIds.length === 0 ? false : true);
-  };
-
+  
   const changeStarColor = (index) => {
     const newTables = [...tables];
     newTables[index].starColor =
@@ -34,35 +43,21 @@ const Home = () => {
     setTables(newTables);
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://fakestoreapi.com/products")
-  //     .then((response) => {
-  //       const initialTables = response.data.map((table) => ({
-  //         ...table,
-  //         starColor: "#c8ceed",
-  //       }));
-  //       setTables(initialTables);
-  //     })
-  //     .catch((error) => {
-  //       console.error("error fetching data", error);
-  //     });
-  // }, []);
-
-  useEffect(()=>{
-    axios.get("http://localhost/backend/get-tables.php")
-    .then((response)=>{
-      setTables(response.data)
-    }).catch((error)=>{
-      console.error('error fetching data',error)
-    })
-
-  },[])
+  useEffect(() => {
+    axios
+      .get("http://localhost/backend/get-tables.php")
+      .then((response) => {
+        setTables(response.data);
+      })
+      .catch((error) => {
+        console.error("error fetching data", error);
+      });
+  }, []);
 
   return (
     <Fragment>
       <div className="main">
-        {!showNavbar ? (
+        {showNavbar ? (
           <div className="up-content">
             <div className="update-button">
               <button>
@@ -82,7 +77,7 @@ const Home = () => {
               <span className="material-symbols-outlined">groups</span>Move to
               team
             </button>
-            <button>
+            <button onClick={editchangeHandler}>
               <span className="material-symbols-outlined">edit</span>Edit
             </button>
             <button>
@@ -105,12 +100,12 @@ const Home = () => {
         <div className="content">
           <ul className="table-list">
             {tables.map((table, index) => (
-              <li className="table-item" key={index}>
+              <li className="table-item" key={table.id}>
                 <input
                   type="checkbox"
                   value={index}
-                  onChange={() => showNavbarHandler(index)}
-                  checked={selectedTableIds.includes(index)}
+                  onChange={() => showNavbarHandler(table.id)}
+                  checked={selectedTableId === table.id}
                 />
                 <span
                   className="material-symbols-outlined"
@@ -121,25 +116,35 @@ const Home = () => {
                 </span>
                 <div className="table-link">
                   <Link to="/table">
-                    {/* <img src={myImage} alt="" /> */}
                     {<img key={index} src={table.imageUrl} alt=" " />}
                   </Link>
-                  <span className="table-category">{table.category}</span>
+                  <span className="table-category">{table.title}</span>
                 </div>
                 <div className="more-side">
                   <p>More</p>
                   <button
-                    onClick={() => toggleDropdown(index)}
+                    onClick={() => {
+                      toggleDropdown(index);
+                      handleTableSelect(table.id);
+                    }}
                     className="material-symbols-outlined"
                   >
                     expand_more
                   </button>
                   {expandedIndex === index && (
                     <ul className="dropdown-content">
-                      <li><p>Paylaş</p></li>
-                      <li><p>Düzenle</p></li>
-                      <li><p>Arşivle</p></li>
-                      <li><p>Sil</p></li>
+                      <li>
+                        <p>Paylaş</p>
+                      </li>
+                      <li>
+                        <p>Düzenle</p>
+                      </li>
+                      <li>
+                        <p>Arşivle</p>
+                      </li>
+                      <li>
+                        <p>Sil</p>
+                      </li>
                     </ul>
                   )}
                 </div>
@@ -147,6 +152,9 @@ const Home = () => {
             ))}
           </ul>
         </div>
+        {isEditing && selectedTableId !== null && (
+          <Edit selectedTable={tables.find((table) => table.id === selectedTableId)} />
+        )}
       </div>
     </Fragment>
   );
