@@ -37,15 +37,26 @@ body {
 .update-button {
   display: flex;
   align-items: center;
-  width: 170px;
-  height: 50px;
+  width: 76px;
+  height: 44px;
   border: 1px solid #bebebe;
   border-radius: 5px;
   padding: 5px;
   box-sizing: border-box;
   border-radius: 6px;
   background: #fff;
-  margin-right: 42px;
+  margin:3px 8px 3px 0px;
+
+}
+
+.update-button p {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #0a1551;
+  font-family: "Open Sans", sans-serif;
+  margin-right: 10px;
 }
 
 .update-button button {
@@ -69,12 +80,19 @@ body {
   margin-right: 10px;
 }
 
-.search-box .material-symbols-outlined {
-  margin-right: 5px;
-  width: 24px;
-  height: 24px;
-  color: #938888;
-  cursor: pointer;
+.search-box {
+  margin: 3px 0px;
+  display: flex;
+  align-items: center;
+  width: 350px;
+  height: 44px;
+  background: #e3e5f5;
+}
+
+.search-button {
+  width: 20px;
+  height: 20px;
+  color: #6f76a7;
 }
 
 input[type="search"] {
