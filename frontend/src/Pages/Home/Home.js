@@ -1,32 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
+
 import axios from "axios";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import Edit from "../../components/Edit/Edit";
 
 const Home = () => {
   const [showNavbar, setShowNavbar] = useState(false);
-  const [selectedTableId, setSelectedTableId] = useState(null);
+  const [selectedTableIds, setSelectedTableIds] = useState([]);
   const [tables, setTables] = useState([]);
+
   const [expandedIndex, setExpandedIndex] = useState(-1);
-  const [isEditing, setIsEditing] = useState(false);
 
-  const handleTableSelect = (tableId) => {
-    setSelectedTableId(tableId);
-  };
-
-
-
-  const editchangeHandler = () => {
-    setIsEditing((prevIsEditing) => !prevIsEditing);
-  };
-
-  
-
-  const showNavbarHandler = (tableId) => {
-    setSelectedTableId((prevTableId) => (prevTableId === tableId ? null : tableId));
-    setShowNavbar(selectedTableId === tableId);
-  };
   const toggleDropdown = (index) => {
     if (expandedIndex === index) {
       setExpandedIndex(-1);
@@ -35,7 +19,14 @@ const Home = () => {
     }
   };
 
-  
+  const showNavbarHandler = (index) => {
+    const newSelectedTableIds = selectedTableIds.includes(index)
+      ? selectedTableIds.filter((id) => id !== index)
+      : [...selectedTableIds, index];
+    setSelectedTableIds(newSelectedTableIds);
+    setShowNavbar(newSelectedTableIds.length === 0 ? false : true);
+  };
+
   const changeStarColor = (index) => {
     const newTables = [...tables];
     newTables[index].starColor =
@@ -43,32 +34,49 @@ const Home = () => {
     setTables(newTables);
   };
 
+  // useEffect(() => {
+  //   axios
+  //     .get("https://fakestoreapi.com/products")
+  //     .then((response) => {
+  //       const initialTables = response.data.map((table) => ({
+  //         ...table,
+  //         starColor: "#c8ceed",
+  //       }));
+  //       setTables(initialTables);
+  //     })
+  //     .catch((error) => {
+  //       console.error("error fetching data", error);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    axios
-      .get("http://localhost/backend/get-tables.php")
+    axios.get("http://localhost/backend/get-tables.php")
       .then((response) => {
-        setTables(response.data);
+        setTables(response.data)
+      }).catch((error) => {
+        console.error('error fetching data', error)
       })
-      .catch((error) => {
-        console.error("error fetching data", error);
-      });
-  }, []);
+
+  }, [])
 
   return (
     <Fragment>
       <div className="main">
-        {showNavbar ? (
+        {!showNavbar ? (
           <div className="up-content">
+
             <div className="update-button">
               <button>
-                <span className="material-symbols-outlined">notes</span> Son
-                güncelleme
+                <p>Sort</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.08086 1.06762L4.49975 4.40954L0.920639 1.06662C0.821136 0.97657 0.66863 0.977071 0.573127 1.07263C0.475624 1.17018 0.475624 1.32877 0.573127 1.42633C0.575127 1.42833 4.32925 4.93434 4.32925 4.93434C4.42625 5.02239 4.57375 5.02239 4.66975 4.93334L8.42037 1.43233C8.52437 1.32877 8.52437 1.17018 8.42687 1.07263C8.33137 0.977071 8.17887 0.976571 8.08086 1.06762Z" fill="#0A1551" stroke="#0A1551" />
+                </svg>
               </button>
             </div>
 
             <div className="search-box">
-              <span className="material-symbols-outlined">search</span>
-              <input type="search" placeholder="Tablolarımı ara" />
+            <span className="material-symbols-outlined search-button">Search</span>
+              <input type="search" placeholder="Search in forms" />
             </div>
           </div>
         ) : (
@@ -77,7 +85,7 @@ const Home = () => {
               <span className="material-symbols-outlined">groups</span>Move to
               team
             </button>
-            <button onClick={editchangeHandler}>
+            <button>
               <span className="material-symbols-outlined">edit</span>Edit
             </button>
             <button>
@@ -100,12 +108,12 @@ const Home = () => {
         <div className="content">
           <ul className="table-list">
             {tables.map((table, index) => (
-              <li className="table-item" key={table.id}>
+              <li className="table-item" key={index}>
                 <input
                   type="checkbox"
                   value={index}
-                  onChange={() => showNavbarHandler(table.id)}
-                  checked={selectedTableId === table.id}
+                  onChange={() => showNavbarHandler(index)}
+                  checked={selectedTableIds.includes(index)}
                 />
                 <span
                   className="material-symbols-outlined"
@@ -116,35 +124,25 @@ const Home = () => {
                 </span>
                 <div className="table-link">
                   <Link to="/table">
+                    {/* <img src={myImage} alt="" /> */}
                     {<img key={index} src={table.imageUrl} alt=" " />}
                   </Link>
-                  <span className="table-category">{table.title}</span>
+                  <span className="table-category">{table.category}</span>
                 </div>
                 <div className="more-side">
                   <p>More</p>
                   <button
-                    onClick={() => {
-                      toggleDropdown(index);
-                      handleTableSelect(table.id);
-                    }}
+                    onClick={() => toggleDropdown(index)}
                     className="material-symbols-outlined"
                   >
                     expand_more
                   </button>
                   {expandedIndex === index && (
                     <ul className="dropdown-content">
-                      <li>
-                        <p>Paylaş</p>
-                      </li>
-                      <li>
-                        <p>Düzenle</p>
-                      </li>
-                      <li>
-                        <p>Arşivle</p>
-                      </li>
-                      <li>
-                        <p>Sil</p>
-                      </li>
+                      <li><p>Paylaş</p></li>
+                      <li><p>Düzenle</p></li>
+                      <li><p>Arşivle</p></li>
+                      <li><p>Sil</p></li>
                     </ul>
                   )}
                 </div>
@@ -152,9 +150,6 @@ const Home = () => {
             ))}
           </ul>
         </div>
-        {isEditing && selectedTableId !== null && (
-          <Edit selectedTable={tables.find((table) => table.id === selectedTableId)} />
-        )}
       </div>
     </Fragment>
   );

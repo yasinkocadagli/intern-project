@@ -36,7 +36,7 @@
   font-family: "Open Sans", sans-serif;
   font-size: 28px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: normal;
   padding: 30px 0px 20px 0px;
 }
@@ -73,9 +73,9 @@
 .email-password label {
   color: #000;
   font-family: "Open Sans", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 450;
+  font-weight: 500;
   line-height: normal;
   margin-bottom: 6px;
 }
@@ -98,7 +98,7 @@
   border: 1px solid #b5bcc5;
   color: #fff;
   font-family: "Open Sans", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
@@ -131,7 +131,7 @@
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-style: normal;
-  font-weight: 450;
+  font-weight: 40 0;
   line-height: normal;
   cursor: pointer;
   text-decoration: none;

@@ -11,7 +11,7 @@
   justify-content: space-between;
   flex-direction: row;
   height: 79px;
-  background-color: #00375c;
+  background-color: #0a1551;
 }
 
 .logo-container {
@@ -27,9 +27,9 @@
 }
 
 .logo-divider {
-  width: 2px;
+  width: 1px;
   height: 30px;
-  background: #504c4c;
+  background: #4a5361;
   margin: 0;
   padding: 0;
 }
@@ -38,6 +38,7 @@
   margin-left: 12px;
   padding: 0;
   display: flex;
+  align-items: center;
 }
 
 .logo-side-text span {
@@ -49,39 +50,41 @@
 .logo-side-text p {
   color: #fff;
   font-family: "Open Sans", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
+
 .header-right-content {
+  display: flex;
+  align-items: center;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+
+.header-right-content p {
+  color: #fff;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-family: "Open Sans", sans-serif;
 }
 
 .header-right-content-texts {
-  cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-right: 35px;
 }
 
-.header-right-content-texts p {
-  color: #fff;
-  font-family: "Open Sans", sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-right: 24px;
+.header-right-content-texts-down p{
+  margin-right: 8px;
 }
 
 .header-right-content img {
-  width: 60px;
+  width: 46px;
   border-radius: 33px;
   border: 2px solid #d2743a;
   padding: 0;

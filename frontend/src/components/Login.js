@@ -174,7 +174,7 @@ const Login = () => {
 
           <div className="login">
             <button type="button" onClick={handleLogin}>
-              Login
+              Log in
             </button>
             <div className="signup">
               <p>Don't have an account</p>
